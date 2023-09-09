@@ -1,6 +1,9 @@
 from dataclasses import dataclass
 
-from tribes.utils import CappedFloat
+from tribes.utils import (
+    CappedFloat_0_1, 
+    PositiveFloat,
+)
 
 from tribes.persons import (
     SkillEnum, 
@@ -11,20 +14,21 @@ from tribes.persons import (
     Personality,
     Race,
     Height,
+    Weight,
 )
 
 @dataclass
 class Person :
     name                : str 
-    age                 : int       
+    age                 : PositiveFloat       
     height              : Height     
-    weight              : float     
+    weight              : Weight     
     deceased            : bool
-    hunger              : CappedFloat
-    thirst              : CappedFloat
-    happiness           : CappedFloat
-    fertility           : CappedFloat
-    reputation          : CappedFloat
+    hunger              : CappedFloat_0_1
+    thirst              : CappedFloat_0_1
+    happiness           : CappedFloat_0_1
+    fertility           : CappedFloat_0_1
+    reputation          : CappedFloat_0_1
     race                : Race
     gender              : GenderEnum
     hierarchy           : HierarchyEnum

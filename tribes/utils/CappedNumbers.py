@@ -44,12 +44,12 @@ class CappedNumber :
             ):
                 if isinstance(value, CappedClass):
                     true_value = value.value
-                elif isinstance(value, number_type):
+                elif isinstance(value, (float, int)):
                     true_value = value
                 else:
                     raise NotImplementedError()
                 
-                return true_value
+                return number_type(true_value)
             
             def __add__(self, value : number_type | Self):
                 val = CappedClass.cast_to_number(value)
@@ -70,6 +70,31 @@ class CappedNumber :
                 val = CappedClass.cast_to_number(value)
 
                 return CappedClass(value=self.value/val)
+            
+            def __lt__(self, value : number_type | Self):
+                val = CappedClass.cast_to_number(value)
+                return self.value < val
+
+            def __le__(self, value : number_type | Self):
+                val = CappedClass.cast_to_number(value)
+                return self.value <= val
+
+            def __eq__(self, value : number_type | Self):
+                val = CappedClass.cast_to_number(value)
+                return self.value == val
+
+            def __ne__(self, value : number_type | Self):
+                val = CappedClass.cast_to_number(value)
+                return self.value != val
+
+            def __gt__(self, value : number_type | Self):
+                val = CappedClass.cast_to_number(value)
+                return self.value > val
+
+            def __ge__(self, value : number_type | Self):
+                val = CappedClass.cast_to_number(value)
+                return self.value >= val
+
         
         return CappedClass
 
@@ -87,5 +112,7 @@ PositiveFloat = CappedNumber.generate_type(
     min_val     = 0.0,
 )
 
-if __name__ == '__main__':
-    print(PositiveFloat(69581981))
+FloatSuperiorTo_1 = CappedNumber.generate_type(
+    number_type = float,
+    min_val     = 1.0,
+)
