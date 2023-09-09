@@ -1,26 +1,8 @@
-from dataclasses import dataclass
-
 from tribes.utils import (
     PositiveFloat,
 )
 
-@dataclass
-class Height:
-    """In meters"""
-    height : float
-
-    def __post_init__(
-            self,
-    ):
-        self.value_container = PositiveFloat(value=self.height)
-
-    @property
-    def value(self):
-        return self.value_container.value
-    
-    @value.setter
-    def value(self, a_value : float):
-        self.value_container.value = a_value
+class Height(PositiveFloat):
     
     def __str__(self, ):
         if self.value < 1 :

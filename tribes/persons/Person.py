@@ -15,12 +15,13 @@ from tribes.persons import (
     Race,
     Height,
     Weight,
+    Age,
 )
 
 @dataclass
 class Person :
     name                : str 
-    age                 : PositiveFloat       
+    age                 : Age       
     height              : Height     
     weight              : Weight     
     deceased            : bool
@@ -32,7 +33,7 @@ class Person :
     race                : Race
     gender              : GenderEnum
     hierarchy           : HierarchyEnum
-    personality_traits  : Personality
     skills              : list[SkillEnum]
     job                 : list[JobEnum]
     medical_condition   : list[MedicalConditionEnum]
+    personality_traits  : Personality = Personality.random_personnality()

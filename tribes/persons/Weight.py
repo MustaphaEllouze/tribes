@@ -1,28 +1,11 @@
-from dataclasses import dataclass
-
 from tribes.utils import (
     PositiveFloat,
 )
 
 NB_FLOATING = 3
 
-@dataclass
-class Weight:
+class Weight(PositiveFloat):
     """In kg"""
-    weight : float
-
-    def __post_init__(
-            self,
-    ):
-        self.value_container = PositiveFloat(value=self.weight)
-
-    @property
-    def value(self):
-        return self.value_container.value
-    
-    @value.setter
-    def value(self, a_value : float):
-        self.value_container.value = a_value
     
     def __str__(self, ):
         return f'{round(self.value, ndigits=NB_FLOATING)}kg'
