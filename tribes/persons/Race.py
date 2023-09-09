@@ -3,6 +3,7 @@ from dataclasses import dataclass
 from tribes.persons import (
     Height,
     Weight,
+    Age,
 )
 
 from tribes.utils import (
@@ -19,16 +20,16 @@ class Race :
     male_weight           : Weight
     female_weight         : Weight
     
-    male_lifespan         : PositiveFloat
-    female_lifespan       : PositiveFloat
+    male_lifespan         : Age
+    female_lifespan       : Age
     
-    sex_mature_age_male   : PositiveFloat
-    sex_mature_age_female : PositiveFloat
+    sex_mature_age_male   : Age
+    sex_mature_age_female : Age
 
-    mature_age_male       : PositiveFloat
-    mature_age_female     : PositiveFloat
+    mature_age_male       : Age
+    mature_age_female     : Age
 
-    gestation_time        : PositiveFloat
+    gestation_time        : Age
     number_of_children    : FloatSuperiorTo_1
 
     reproductive_rate     : CappedFloat_0_1
@@ -44,3 +45,20 @@ class Race :
     metabolic_rate        : CappedFloat_0_1
 
     heart_rate            : PositiveFloat
+
+    def __post_init__(self):
+        if self.carnivorous_rate +\
+            self.herbivorous_rate +\
+            self.insectivorous_rate != 1: 
+            raise ValueError("carnivorous_rate"\
+                            "+herbivorous_rate+insectivorous_rate"\
+                            " should be equal to 1.")
+        
+        if self.muscle_ratio +\
+            self.bone_ratio +\
+            self.organs_ratio != 1: 
+            raise ValueError("muscle_ratio"\
+                            "+bone_ratio+organs_ratio"\
+                            " should be equal to 1.")
+
+

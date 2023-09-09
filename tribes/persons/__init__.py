@@ -9,3 +9,7 @@ from tribes.persons.Height           import Height
 from tribes.persons.Weight           import Weight
 from tribes.persons.Age              import Age
 from tribes.persons.Person           import Person
+
+from tribes.persons.Data import (
+    HUMAN,
+)
