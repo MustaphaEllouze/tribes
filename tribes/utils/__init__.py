@@ -1,1 +1,1 @@
-from tribes.utils.CappedFloat import CappedFloat
+from tribes.utils.CappedNumbers import CappedFloat
