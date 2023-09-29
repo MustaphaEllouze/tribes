@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 
-from tribes.persons import (
+from tribes.utils import (
     Height,
     Weight,
     Age,

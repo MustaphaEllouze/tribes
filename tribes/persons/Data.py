@@ -6,9 +6,12 @@ from tribes.utils import (
 
 from tribes.persons import (
     Race, 
+)
+
+from tribes.utils import (
+    Age, 
     Height, 
     Weight, 
-    Age, 
 )
 
 # -----------------------------------------------------------

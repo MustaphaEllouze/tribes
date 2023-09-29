@@ -13,9 +13,12 @@ from tribes.persons import (
     HierarchyEnum,
     Personality,
     Race,
-    Height,
+)
+
+from tribes.utils import (
+    Age, 
+    Height, 
     Weight,
-    Age,
 )
 
 
