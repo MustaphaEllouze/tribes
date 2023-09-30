@@ -1,11 +1,30 @@
+"""Représentation de la personnalité d'une personne."""
+
+# -------------------------------- IMPORTS ------------------------------------
 from enum import Enum
+from typing import Self
 
 from tribes.utils.random import gauss01
 from tribes.utils import (
     CappedFloat_0_1,
 )
 
+# ---------------------------------- UTILS ------------------------------------
+def __random_trait(
+        strategy : str = 'gaussian',
+)->float:
+    """Fonction qui renvoie une stratégie d'attribution aléatoire d'un trait 
+    de personnalité.
+    
+    Returns : 
+        float : Nombre aléatoire pour un trait de personnalité."""
+    if strategy == 'gaussian':
+        return gauss01()
+    else:
+        raise ValueError(f"'{strategy}' is unknown.")
+
 class PersonalityTraitEnum(Enum):
+    """Enumération des axes différents de personnalités."""
     EXTRAVERTED     = 'Extraverted'
     EXPRESSIVE      = 'Expressive'
     SERIOUS         = 'Serious'
@@ -31,35 +50,41 @@ class PersonalityTraitEnum(Enum):
     GRATEFUL        = 'Grateful'
     LOYAL           = 'Loyal'
 
+# -------------------------------- CLASSE -------------------------------------
 class Personality :
+    """Structure de donnée d'une personnalité."""
     def __init__(
             self,
-            Extraverted     : float | CappedFloat_0_1, 
-            Expressive      : float | CappedFloat_0_1, 
-            Serious         : float | CappedFloat_0_1, 
-            Logical         : float | CappedFloat_0_1, 
-            Cautious        : float | CappedFloat_0_1, 
-            Independent     : float | CappedFloat_0_1, 
-            Optimistic      : float | CappedFloat_0_1, 
-            Creative        : float | CappedFloat_0_1, 
-            Empathetic      : float | CappedFloat_0_1, 
-            Confident       : float | CappedFloat_0_1, 
-            Patient         : float | CappedFloat_0_1, 
-            Tolerant        : float | CappedFloat_0_1, 
-            Unpredictable   : float | CappedFloat_0_1, 
-            Cooperative     : float | CappedFloat_0_1, 
-            Ambitious       : float | CappedFloat_0_1, 
-            Perfectionist   : float | CappedFloat_0_1, 
-            Organized       : float | CappedFloat_0_1, 
-            Openminded      : float | CappedFloat_0_1, 
-            Humble          : float | CappedFloat_0_1, 
-            Generous        : float | CappedFloat_0_1, 
-            Forgiving       : float | CappedFloat_0_1, 
-            Honest          : float | CappedFloat_0_1, 
-            Grateful        : float | CappedFloat_0_1, 
-            Loyal           : float | CappedFloat_0_1, 
+            Extraverted     : float | CappedFloat_0_1 = __random_trait(), 
+            Expressive      : float | CappedFloat_0_1 = __random_trait(), 
+            Serious         : float | CappedFloat_0_1 = __random_trait(), 
+            Logical         : float | CappedFloat_0_1 = __random_trait(), 
+            Cautious        : float | CappedFloat_0_1 = __random_trait(), 
+            Independent     : float | CappedFloat_0_1 = __random_trait(), 
+            Optimistic      : float | CappedFloat_0_1 = __random_trait(), 
+            Creative        : float | CappedFloat_0_1 = __random_trait(), 
+            Empathetic      : float | CappedFloat_0_1 = __random_trait(), 
+            Confident       : float | CappedFloat_0_1 = __random_trait(), 
+            Patient         : float | CappedFloat_0_1 = __random_trait(), 
+            Tolerant        : float | CappedFloat_0_1 = __random_trait(), 
+            Unpredictable   : float | CappedFloat_0_1 = __random_trait(), 
+            Cooperative     : float | CappedFloat_0_1 = __random_trait(), 
+            Ambitious       : float | CappedFloat_0_1 = __random_trait(), 
+            Perfectionist   : float | CappedFloat_0_1 = __random_trait(), 
+            Organized       : float | CappedFloat_0_1 = __random_trait(), 
+            Openminded      : float | CappedFloat_0_1 = __random_trait(), 
+            Humble          : float | CappedFloat_0_1 = __random_trait(), 
+            Generous        : float | CappedFloat_0_1 = __random_trait(), 
+            Forgiving       : float | CappedFloat_0_1 = __random_trait(), 
+            Honest          : float | CappedFloat_0_1 = __random_trait(), 
+            Grateful        : float | CappedFloat_0_1 = __random_trait(), 
+            Loyal           : float | CappedFloat_0_1 = __random_trait(), 
     ):
-        self.personality = {
+        
+        # --- Attributes --- 
+
+        # Construction d'un dictionnaire intermédiaire 
+        _personality = {
             PersonalityTraitEnum.EXTRAVERTED     : Extraverted  ,
             PersonalityTraitEnum.EXPRESSIVE      : Expressive   ,
             PersonalityTraitEnum.SERIOUS         : Serious      ,
@@ -86,15 +111,27 @@ class Personality :
             PersonalityTraitEnum.LOYAL           : Loyal        ,
         }
 
-        for personality, value in self.personality.items():
-            self.personality[personality] = CappedFloat_0_1.cast_to_number(
-                value=value,
+        # Construction de l'attribut personality à partir du dictionnaire 
+        # intermédiaire.
+        self.personality = {
+            _trait.value:CappedFloat_0_1.cast_to_number(
+                value=_value
             )
+            for _trait, _value in _personality.items()
+        }
     
     @classmethod
-    def random_personnality(cls, ):
+    def random_personnality(cls, )->Self:
+        """Renvoie une personnalité randomisée.
+
+        Returns:
+            Self: Personnalité randomisée.
+        """
+
+        # Création des arguments pour le constructeur, génération aléatoire
         attributes = {}
         for trait in PersonalityTraitEnum:
-            attributes[trait.value] = gauss01()
+            attributes[trait.value] = __random_trait()
         
+        # Appel du constructeur avec ces arguments
         return Personality(**attributes)
