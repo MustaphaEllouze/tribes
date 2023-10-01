@@ -21,7 +21,7 @@ class CappedNumber :
             number_type : type        = float,
             min_val     : float | int = None,
             max_val     : float | int = None,
-    )->type:
+    ):
         """Renvoie une classe dont le comportement est identique à float ou int
         , qui inclut une gestion de bornes supérieure et inférieure. Chaque
         opération fait en sorte de renvoyer une des deux bornes en cas 
