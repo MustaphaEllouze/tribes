@@ -32,13 +32,11 @@ C'est un projet long-terme, il prendra je l'espère de l'ampleur au fur et à me
 
 ## Ce qu'il faudrait faire 
 * Module `persons`: 
-    * commentaires et documentation 
     * proposer un assemblage de `hierarchy` et `job` pour distinguer la position hiérarchique et la position sociétale.
     * proposer une manière de gérer la réputation d'une personne vis-à-vis d'une autre personne
     * dans `personality`, faire en sorte qu'on ne puisse pas toucher aux valeurs des attributs du dictionnaire, accès via fonctions.
     * dans `race`, il faudrait grouper les tailles, poids (etc.) cible ensemble et laisser `gender` définir les genres toute seule.
 * Module `utils`  : 
-    * commentaires et documentation 
     * définir des distributions, et des randint dans ces distributions
 
 ## TODO list détaillée
