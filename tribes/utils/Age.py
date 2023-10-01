@@ -4,7 +4,6 @@
 from enum import Enum
 
 from tribes.utils import (
-    PositiveFloat,
     Time, FormatTime
 )
 

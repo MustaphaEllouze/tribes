@@ -18,7 +18,8 @@ YEARS_TO_DAYS   = 365
 
 # --------------------------------- CLASSE ------------------------------------
 class Time:
-    """Représentation du temps. Unité = années"""
+    """Représentation du temps. Unité = années.
+    La valeur est nécessairement positive."""
 
     def __init__(
         self,
@@ -26,7 +27,8 @@ class Time:
     )->None:
         """
         Args:
-            value (float | int): temps en années
+            value (float | int): temps en années. Si la valeur est négative,
+            elle sera prise égale à zéro.
         """
         self.__encapsulated_value = PositiveFloat(value=value)
     
