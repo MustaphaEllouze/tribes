@@ -50,6 +50,9 @@ class CappedNumber :
                     raise NotImplementedError()
                 
                 return number_type(true_value)
+
+            def get_value(self, )->number_type:
+                return self.value
             
             def __add__(self, value : number_type | Self):
                 val = CappedClass.cast_to_number(value)

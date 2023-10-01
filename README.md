@@ -12,10 +12,8 @@ C'est un projet long-terme, il prendra je l'espère de l'ampleur au fur et à me
 
 ## Description des modules
 * Module `persons` : 
-    * `Age` : gestion de l'âge, à passer dans une classe abstraite en dehors de `persons`.
     * `Data` : contient l'ensemble des données nécessaires pour le bon fonctionnement, dont définition des races, etc.
     * `Gender` : gestion des sexes biologiques. 
-    * `Height` : gestion de la taille, à passer dans une classe abstraite en dehors de `persons`.
     * `Hierarchy` : gestion de la hiérarchie au sein de la tribu.
     * `Job` : gestion des différents métiers.
     * `MedicalCondition` : gestion des maladies et handicaps d'une personne.
@@ -23,11 +21,14 @@ C'est un projet long-terme, il prendra je l'espère de l'ampleur au fur et à me
     * `Personality` : gestion de la personnalité des individus.
     * `Race` : gestion des races et de leurs caractéristiques.
     * `Skill`  : gestion des aptitudes des personnes.
-    * `Weight` : gestion du poids des personnes, à passer dans une classe abstraite en dehors de `persons`.
 
 * Module `utils`:
-    * `CappedNumbers` : définition de nombres avec bornes supérieures et/ou inférieures.
+    * `CappedNumbers` : définition de nombres avec bornes supérieures et/ou 
+    * `Age` : gestion de l'âge.
+    * `Time` : gestion du temps
     * `random` : gère la génération de nombres aléatoires selon certaines lois.
+    * `Weight` : gestion du poids des personnes
+    * `Height` : gestion de la taille
 
 ## Ce qu'il faudrait faire 
 * Module `persons`: 
@@ -38,7 +39,6 @@ C'est un projet long-terme, il prendra je l'espère de l'ampleur au fur et à me
     * dans `race`, il faudrait grouper les tailles, poids (etc.) cible ensemble et laisser `gender` définir les genres toute seule.
 * Module `utils`  : 
     * commentaires et documentation 
-    * séparer `Age` en `Age` + `Time`
     * définir des distributions, et des randint dans ces distributions
 
 ## TODO list détaillée

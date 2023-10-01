@@ -1,59 +1,76 @@
+"""Gestion de l'âge des personnes"""
+
+# -------------------------------- IMPORTS ------------------------------------
 from enum import Enum
 
 from tribes.utils import (
     PositiveFloat,
+    Time, FormatTime
 )
 
-class FormatAge(Enum):
-    YEARS  = 'years'
-    MONTHS = 'months'
-    DAYS   = 'days'
+# --------------------------------- CLASSE ------------------------------------
+class Age:
+    """Représente l'âge de quelque chose."""
 
-YEARS_TO_MONTHS = 12
-YEARS_TO_DAYS   = 365
-
-class Age(PositiveFloat):
-    """in years"""
-
-    def __str__(self, format:str=FormatAge.YEARS.value):
-        
-        match format :
-            
-            case FormatAge.DAYS.value :
-                return f'{self.get_age_in_days()} days'
-            
-            case FormatAge.MONTHS.value :
-                months, days = self.get_age_in_months_days()
-                return f'{months} months {days} days'
-            
-            case FormatAge.YEARS.value :
-                years, months, days = self.get_age_in_ymd()
-                return f'{years} years {months} months {days} days'
-
-
-    def get_age_in_ymd(self)->tuple[int, int, int]:
-        total_age = self.value
-        years = int(self.value)
-        months = int((total_age-years)*YEARS_TO_MONTHS)
-        days = int((total_age-years-months/YEARS_TO_MONTHS)*YEARS_TO_DAYS)
-
-        return years, months, days
-
-    def get_age_in_months_days(self)->tuple[int, int]:
-        total_age = self.value
-        months = int(total_age*YEARS_TO_MONTHS)
-        days = int((total_age-months/YEARS_TO_MONTHS)*YEARS_TO_DAYS)
-
-        return months, days
-
-    def get_age_in_days(self)->int :
-        return int(self.value*YEARS_TO_DAYS)
-
-    def add_age(self, age : float = 0.0):
-        self.value += age
+    def __init__(
+        self, 
+        value:float|int,
+    )->None:
+        self.__encapsulated_time = Time(value=value)
     
-    def add_age_in_months(self, age : float = 0.0):
-        self.value += age/12
+    @property
+    def value(self, )->float:
+        return self.__encapsulated_time.value
+
+    def to_str(
+        self, 
+        format:str=FormatTime.YEARS.value,
+    )->str:
+        """Renvoie une représentation en chaîne de caractères. Différents
+        formats sont possibles.
+
+        Args:
+            format (str, optional): Format d'impression. Defaults to 'years'.
+
+        Returns:
+            str: Représentation en chaîne de caractéères.
+        """
+        return self.__encapsulated_time.to_str(format=format)
     
-    def add_age_in_days(self, age : float = 0.0):
-        self.value += age/365
+    def add_time(
+        self, 
+        time:float=0.0,
+    )->None:
+        """
+        Ajoute du temps, en années
+
+        Args:
+            time (float, optional): Temps à rajouter. Defaults to 0.0.
+        """
+        self.__encapsulated_time.add_time(time=time)
+    
+    def add_time_in_months(
+        self, 
+        time:float=0.0,
+    )->None:
+        """
+        Ajoute du temps, en mois
+
+        Args:
+            time (float, optional): Temps à rajouter. Defaults to 0.0.
+        """
+        self.__encapsulated_time.add_time_in_months(time=time)
+    
+    def add_time_in_days(
+        self, 
+        time:float=0.0,
+    )->None:
+        """
+        Ajoute du temps, en jours
+
+        Args:
+            time (float, optional): Temps à rajouter. Defaults to 0.0.
+        """
+        self.__encapsulated_time.add_time_in_days(time=time)
+
+    
