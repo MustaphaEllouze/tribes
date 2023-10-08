@@ -35,6 +35,9 @@ class Age:
             str: Représentation en chaîne de caractéères.
         """
         return self.__encapsulated_time.to_str(format=format)
+
+    def __str__(self) -> str:
+        return self.to_str(format=FormatTime.YEARS.value)
     
     def add_time(
         self, 
