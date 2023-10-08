@@ -1,4 +1,4 @@
-"""Définition des tsts pour vortex.core.geometry.Point"""
+"""Définition des tests pour tribes.utils.Age"""
 # Bibliothèque standard de test
 import unittest
 
