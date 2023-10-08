@@ -35,8 +35,15 @@ class Time:
     @property
     def value(self, )->float :
         return self.__encapsulated_value.get_value()
+    
+    @property
+    def ymd(self, )->tuple[int, int, int]:
+        """Returns:
+            tuple[int, int, int]: années, mois, jours"""
+        return self.get_time_in_ymd()
 
-    def __get_time_in_ymd(self, )->tuple[int, int, int]:
+
+    def get_time_in_ymd(self, )->tuple[int, int, int]:
         """Renvoie le temps en années, mois et jours.
 
         Returns:
@@ -58,7 +65,7 @@ class Time:
         # Résultat
         return years, months, days
     
-    def __get_time_in_months_days(self, )->tuple[int, int]:
+    def get_time_in_months_days(self, )->tuple[int, int]:
         """Renvoie le temps en mois et en jours.
 
         Returns:
@@ -77,7 +84,7 @@ class Time:
         # Résultat
         return months, days
 
-    def __get_age_in_days(self, )->int:
+    def get_time_in_days(self, )->int:
         """Renvoie le temps en jours
 
         Returns:
@@ -103,14 +110,14 @@ class Time:
         match format :
 
             case FormatTime.DAYS.value : 
-                return f'{self.__get_age_in_days()} days'
+                return f'{self.get_time_in_days()} days'
 
             case FormatTime.MONTHS.value :
-                months, days = self.__get_time_in_months_days()
+                months, days = self.get_time_in_months_days()
                 return f'{months} months {days} days'
 
             case FormatTime.YEARS.value : 
-                years, months, days = self.__get_time_in_ymd()
+                years, months, days = self.get_time_in_ymd()
                 return f'{years} years {months} months {days} days'
             
             case _ :

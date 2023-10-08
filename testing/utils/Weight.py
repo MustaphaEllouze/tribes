@@ -27,7 +27,7 @@ class WeightTest(unittest.TestCase):
         Vérifie que les fonctions add*** et remove*** sont bien implémentées.
         """
 
-        # add_Weight
+        # add_mass
         for _value in WeightTest.valeurs :
             for _shift in WeightTest.shift_values :
 
@@ -42,7 +42,7 @@ class WeightTest(unittest.TestCase):
                     _from_Positive_Float.value,
                 )
 
-        # add_time_in_months
+        # add_mass_in_g
         for _value in WeightTest.valeurs :
             for _shift in WeightTest.shift_values :
 
@@ -57,7 +57,7 @@ class WeightTest(unittest.TestCase):
                     _from_Positive_Float.value,
                 )
                 
-        # remove_Weight
+        # remove_mass
         for _value in WeightTest.valeurs :
             for _shift in WeightTest.shift_values :
 
@@ -72,7 +72,7 @@ class WeightTest(unittest.TestCase):
                     _from_Positive_Float.value,
                 )
 
-        # remove_Weight_in_cm
+        # remove_mass_in_g
         for _value in WeightTest.valeurs :
             for _shift in WeightTest.shift_values :
 
