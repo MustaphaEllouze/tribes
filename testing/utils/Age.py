@@ -72,3 +72,11 @@ class AgeTest(unittest.TestCase):
                     _from_Time.value,
                 )
     
+    def test_02(self):
+        """Vérifie que la transformation en chaîne de caractère n'est pas 
+        cassée."""
+
+        for _value in AgeTest.valeurs :
+            str(Age(value=_value))
+        
+        self.assert_(True)

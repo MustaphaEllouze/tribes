@@ -32,7 +32,7 @@ class Age:
             format (str, optional): Format d'impression. Defaults to 'years'.
 
         Returns:
-            str: Représentation en chaîne de caractéères.
+            str: Représentation en chaîne de caractères.
         """
         return self.__encapsulated_time.to_str(format=format)
 

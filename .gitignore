@@ -4,3 +4,5 @@ __pycache__/
 *$py.class
 
 _dev**.py
+.coverage
+.DS_Store

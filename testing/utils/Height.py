@@ -8,7 +8,7 @@ from tribes.utils import Height, PositiveFloat
 class HeightTest(unittest.TestCase):
     """Définition des tests"""
     
-    valeurs = (1.0, 2.0, 3.0, 1, 2, 3, -1, 0, 1000)
+    valeurs = (1.0, 2.0, 3.0, 1, 2, 3, -1, 0, 1000, 0.37, -0.22, 0.999)
     shift_values = (0., 1., 2, -0.37, 0.37, -100, 0.98782)
 
     def test_00(self):
@@ -86,5 +86,13 @@ class HeightTest(unittest.TestCase):
                     _from_Height.value,
                     _from_Positive_Float.value,
                 )
+    
+    def test_02(self):
+        """Vérifie que la conversion en str est fonctionnelle"""
+
+        for _valeur in HeightTest.valeurs:
+            str(Height(value=_valeur))
+        
+        self.assert_(True)
 
     
