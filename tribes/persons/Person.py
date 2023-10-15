@@ -8,6 +8,7 @@ from typing import Iterable
 
 from tribes.utils import (
     CappedFloat_0_1, 
+    PositiveFloat,
 )
 
 from tribes.persons import (
@@ -126,7 +127,8 @@ class Person :
             self, 
             age : float | int,
     )->None:
-        raise NotImplementedError()
+        _add_age = PositiveFloat(value=age).cast_to_number()
+        self.age.add_time(time=_add_age)
     
     def grow(
             self, 
