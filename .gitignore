@@ -6,3 +6,6 @@ __pycache__/
 _dev**.py
 .coverage
 .DS_Store
+*.exe
+.vscode/tasks.json
+.vscode/settings.json
