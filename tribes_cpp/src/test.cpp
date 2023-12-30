@@ -1,15 +1,9 @@
-#include "utils/capped_numbers/capped_number.hpp"
-#include "utils/capped_numbers/capped_float_01.hpp"
-#include "utils/capped_numbers/positive_float.hpp"
+#include "utils/height.hpp"
 #include <iostream>
 
 int main(){
-    PositiveFloat i(1);
-    PositiveFloat j(-1);
-
-    std::cout << i+j << std::endl;
-    std::cout << i-j << std::endl;
-    std::cout << i*j << std::endl;
-    std::cout << i/j << std::endl;
+    Height result(1.5);
+    result  = result *1.5;
+    std::cout << result << std::endl;
     return 0;
 }

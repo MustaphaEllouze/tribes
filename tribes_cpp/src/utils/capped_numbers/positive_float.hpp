@@ -11,6 +11,17 @@ class PositiveFloat : public CappedNumber
         // CONSTRUCTORS
         PositiveFloat();
         PositiveFloat(float value);
+
+        // UTILITY METHODS
+        PositiveFloat& operator+=(const PositiveFloat& other);
+        PositiveFloat& operator+=(const float other);
+        PositiveFloat& operator-=(const PositiveFloat& other);
+        PositiveFloat& operator-=(const float other);
+        PositiveFloat& operator*=(const PositiveFloat& other);
+        PositiveFloat& operator*=(const float other);
+        PositiveFloat& operator/=(const PositiveFloat& other);
+        PositiveFloat& operator/=(const float other);
+
     private:
         // BOUNDS FOR CAPPED FLOATS
         const static float min_value;

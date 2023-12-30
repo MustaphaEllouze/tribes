@@ -11,6 +11,17 @@ class CappedFloat01 : public CappedNumber
         // CONSTRUCTORS
         CappedFloat01();
         CappedFloat01(float value);
+
+        // UTILITY METHODS
+        CappedFloat01& operator+=(const CappedFloat01& other);
+        CappedFloat01& operator+=(const float other);
+        CappedFloat01& operator-=(const CappedFloat01& other);
+        CappedFloat01& operator-=(const float other);
+        CappedFloat01& operator*=(const CappedFloat01& other);
+        CappedFloat01& operator*=(const float other);
+        CappedFloat01& operator/=(const CappedFloat01& other);
+        CappedFloat01& operator/=(const float other);
+
     private:
         // BOUNDS FOR CAPPED FLOATS
         const static float min_value;
