@@ -1,3 +1,6 @@
+# ifndef DEF_UTILS_TIME
+#define DEF_UTILS_TIME
+
 #include <tuple>
 #include <iostream>
 
@@ -25,3 +28,5 @@ class Time {
 std::ostream& operator<<(std::ostream& flux, Time time);
 Time operator+(Time const& a, Time const& b);
 Time operator-(Time const& a, Time const& b);
+
+#endif

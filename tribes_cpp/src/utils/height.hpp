@@ -1,3 +1,6 @@
+#ifndef DEF_UTILS_HEIGHT
+#define DEF_UTILS_HEIGHT
+
 #include <iostream>
 
 #include "capped_numbers/positive_float.hpp"
@@ -28,3 +31,5 @@ Height operator+(Height const& height, float const value);
 Height operator-(Height const& height, float const value);
 Height operator*(Height const& height, float const value);
 Height operator/(Height const& height, float const value);
+
+#endif

@@ -1,3 +1,6 @@
+#ifndef DEF_UTILS_WEIGHT
+#define DEF_UTILS_WEIGHT
+
 #include <iostream>
 
 #include "capped_numbers/positive_float.hpp"
@@ -28,3 +31,5 @@ Weight operator+(Weight const& weight, float const value);
 Weight operator-(Weight const& weight, float const value);
 Weight operator*(Weight const& weight, float const value);
 Weight operator/(Weight const& weight, float const value);
+
+#endif
