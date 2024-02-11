@@ -135,28 +135,39 @@ class Person :
             height_rate : float | int, 
             units : str = HeightUnits.M.value,
     )->None :
-        raise NotImplementedError()
+        match units :
+            case HeightUnits.M.value : 
+                self.height.add_height(height_rate=height_rate)
+            case HeightUnits.CM.value : 
+                self.height.add_height(height_rate=height_rate/100.)
+            case HeightUnits.MM.value : 
+                self.height.add_height(height_rate=height_rate/1000.)
+            
     
     def shrink(
             self, 
             height_rate : float | int, 
             units : str = HeightUnits.M.value,
     )->None :
-        raise NotImplementedError()
+        self.grow(height_rate=-height_rate, units=units)
     
     def gain_weight(
             self, 
             mass_rate : float | int, 
-            units : str = HeightUnits.M.value,
+            units : str = MassUnits.KG.value,
     )->None :
-        raise NotImplementedError()
+        match units :
+            case MassUnits.KG.value :
+                self.weight.add_mass(mass_rate=mass_rate)
+            case MassUnits.G.value:
+                self.weight.add_mass(mass_rate=mass_rate/1000.)
     
     def lose_weight(
             self, 
             mass_rate : float | int, 
             units : str = HeightUnits.M.value,
     )->None :
-        raise NotImplementedError()
+        self.gain_weight(mass_rate=-mass_rate)
     
 
     def set_hierarchy(
